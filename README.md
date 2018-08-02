@@ -4,6 +4,10 @@ This is a build of HAProxy incorporating the LUA ACME2 client explained here :
 
 https://www.haproxy.com/blog/lets-encrypt-acme2-for-haproxy/
 
+``
+docker pull rayel/haproxy-acme2
+``
+
 # Run with host networking
 
 ``

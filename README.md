@@ -18,13 +18,9 @@ Then from the host :
 
 ```
 curl -vv -XPOST http://127.0.0.1:9011/acme/order \
-
 -F 'account_key=@account.key' \
-
 -F 'domain=example.net' \
-
 -F 'domain_key=@example.net.key' \
-
 -o example.net.pem
 ```
 
@@ -33,6 +29,7 @@ curl -vv -XPOST http://127.0.0.1:9011/acme/order \
 ``
 docker run -d -p 80:80  -v /dev/log:/dev/log  -v /usr/local/certs:/usr/local/certs  --name my-acme2-haproxy rayel/haproxy-acme2
 ``
+
 Now you can run curl inside the container , with a mounted volume to retrieve the cert
 
 ```

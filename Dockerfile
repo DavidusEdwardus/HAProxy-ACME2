@@ -4,7 +4,7 @@ ENV LUA_PATH /usr/local/etc/lua/?.lua;;
 
 RUN set -ex ; \ 
 	apt-get -y update; \
-	apt-get install -y vim procps lua5.3 lua-socket liblua5.3-0  lua-luaossl
+	apt-get install -y vim procps lua5.3 lua-socket liblua5.3-0 lua-luaossl curl
 
 COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
 COPY config.lua /usr/local/etc/lua/config.lua

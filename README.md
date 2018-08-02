@@ -18,9 +18,13 @@ Then from the host :
 
 ``
 curl -vv -XPOST http://127.0.0.1:9011/acme/order \
+
 -F 'account_key=@account.key' \
+
 -F 'domain=example.net' \
+
 -F 'domain_key=@example.net.key' \
+
 -o example.net.pem
 ``
 
@@ -34,10 +38,14 @@ Now you can run curl inside the container , with a mounted volume to retrieve th
 ``
 docker run -it --rm --name haproxy-acme2-apply my-acme2-haproxy \ 
 curl -vv -XPOST http://127.0.0.1:9011/acme/order \
+
 -F 'account_key=@account.key' \
+
 -F 'domain=example.net'\ 
+
 -F 'domain_key=@example.net.key' \
--o /usr/local/certs/example.net.pem \
+
+-o /usr/local/certs/example.net.pem 
 ``
 
 

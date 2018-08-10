@@ -25,6 +25,8 @@ docker run -d -p 80:80 -p 443:443 -v /dev/log:/dev/log -v /usr/local/certs:/etc/
 
 N.B. The contaner will not start if there are no existing certificates to serve from /etc/haproxy/ssl. If you're starting from scratch, you can put a dumym self signed cert in to get you going.
 
+# Apply for certificate 
+
 Now you can run curl from inside the container , with a mounted volume above (/usr/local/certs) containing your keys, and to deposit the cert
 
 ```

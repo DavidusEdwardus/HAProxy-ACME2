@@ -38,4 +38,11 @@ curl -vv -XPOST http://127.0.0.1:9011/acme/order \
 -o /etc/haproxy/ssl/example.net.pem
 ```
 
+#  Apply the certificate
+
+You can now just reload haproxy, and the new certificates will be picked up
+
+```
+docker kill -s HUP my-acme2-haproxy 
+```
 

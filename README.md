@@ -19,9 +19,14 @@ openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out example.net.ke
 
 # Start container
 
-``
-docker run -d -p 80:80 -p 443:443 -v /dev/log:/dev/log -v /usr/local/certs:/etc/haproxy/ssl -v /usr/local/keys:/usr/local/keys --name my-acme2-haproxy rayel/haproxy-acme
-``
+```
+docker run -d -p 80:80 \
+-p 443:443 \
+-v /dev/log:/dev/log \
+-v /usr/local/certs:/etc/haproxy/ssl \
+-v /usr/local/keys:/usr/local/keys \
+--name my-acme2-haproxy rayel/haproxy-acme
+```
 
 N.B. The contaner will not start if there are no existing certificates to serve from /etc/haproxy/ssl. If you're starting from scratch, you can put a dumym self signed cert in to get you going.
 
@@ -51,7 +56,12 @@ docker kill -s HUP my-acme2-haproxy
 You may want to use your own HAProxy file to suit your needs, in which case you can override the config file in the container at run time :
 
 ``
-docker run -d -p 80:80 -p 443:443 -v /dev/log:/dev/log -v /usr/local/certs:/etc/haproxy/ssl -v /usr/local/keys:/usr/local/keys -v /etc/haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg --name my-acme2-haproxy rayel/haproxy-acme
+docker run -d -p 80:80 -p 443:443 \
+-v /dev/log:/dev/log \
+-v /usr/local/certs:/etc/haproxy/ssl \
+-v /usr/local/keys:/usr/local/keys \
+-v /etc/haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg \
+--name my-acme2-haproxy rayel/haproxy-acme
 ``
 
 

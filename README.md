@@ -14,6 +14,13 @@ docker pull rayel/haproxy-acme2
 docker run -d -v /dev/log:/dev/log   --network host --name my-acme2-haproxy rayel/haproxy-acme2
 ``
 
+# Generate keys
+
+``
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out account.key
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out example.net.key
+``
+
 Then from the host :
 
 ```

@@ -38,15 +38,15 @@ curl -vv -XPOST http://127.0.0.1:9011/acme/order \
 docker run -d -p 80:80  -v /dev/log:/dev/log  -v /usr/local/certs:/usr/local/certs  --name my-acme2-haproxy rayel/haproxy-acme2
 ``
 
-Now you can run curl inside the container , with a mounted volume to retrieve the cert
+Now you can run curl inside the container , with a mounted volume above (/usr/local/certs) containing your keys, and to deposit the cert
 
 ```
-docker run -it --rm --name haproxy-acme2-apply my-acme2-haproxy \ 
+docker exec -it  my-acme2-haproxy \
 curl -vv -XPOST http://127.0.0.1:9011/acme/order \
--F 'account_key=@account.key' \
--F 'domain=example.net'\ 
--F 'domain_key=@example.net.key' \
--o /usr/local/certs/example.net.pem 
+-F 'account_key=@/usr/local/certs/account.key' \
+-F 'domain=example.net' \
+-F 'domain_key=@/usr/local/certs/account.key' \
+-o /usr/local/certs/example.net.pem
 ```
 
 
